@@ -1,29 +1,20 @@
-def word_counter(book_content):
+def get_word_counter(book_content):
     book_words = book_content.split()
-    num_words = len(book_words)
-    print(f"{num_words} words found in the document")
+    return len(book_words)
     
-def character_counter(content):
-    content_lower = content.lower()
-    char = list(content_lower)
-    char_unique = set()
-    char_counter = {}
+def get_character_counter(content):
+    chars = {}
+    for c in content:
+        lowered = c.lower()
+        if lowered in chars:
+            chars[lowered] += 1
+        else:
+            chars[lowered] = 1
+            
+    return chars
+
+def get_chars_sorted(char_dict):
+    list_dictionaries = []
+    dict_row = {}
     
-    for c in char:
-        char_unique.add(c)
-        
- #   print(len(char))
- #   print(len(char_unique))
-    
-    char_size = len(char)
-    
-    for c in sorted(char_unique):
-        temp = 0
-        i = 0
-        while (i < char_size):
-            if c == char[i]:
-                temp += 1
-            i += 1
-        char_counter[c] = temp
-           
-    return char_counter
+    return
