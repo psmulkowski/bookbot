@@ -13,8 +13,16 @@ def get_character_counter(content):
             
     return chars
 
-def get_chars_sorted(char_dict):
+def sort_on(dict):
+    return dict["num"]
+
+def get_chars_sorted(chars_dict):
     list_dictionaries = []
-    dict_row = {}
     
-    return
+    for char in chars_dict:
+        dict_row = {"char": char, "num": chars_dict[char]}
+        list_dictionaries.append(dict_row)
+    list_dictionaries.sort(reverse=True, key=sort_on)
+    
+    return list_dictionaries
+
