@@ -1,5 +1,5 @@
-import os
 from stats import get_word_counter, get_character_counter, get_chars_sorted, sort_on
+import os, sys
 
 def get_book_text(filepath):
     with open(filepath) as f:
@@ -7,8 +7,12 @@ def get_book_text(filepath):
     return file_contents
 
 def main():
-    data_path = os.path.join(os.path.dirname(__file__), "books", "frankenstein.txt")
-  #  print(data_path)
+  #  data_path = os.path.join(os.path.dirname(__file__), "books", "frankenstein.txt")
+    if len(sys.argv) < 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    data_path = sys.argv[1]
+    
     book_content = get_book_text(data_path)
     word_counter = get_word_counter(book_content)
     character_counter = get_character_counter(book_content)
